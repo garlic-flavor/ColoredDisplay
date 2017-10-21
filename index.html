@@ -91,29 +91,38 @@
     </style>
 
     <script type="application/javascript">
+      var redBar, greenBar, blueBar, sample, redLeft, redRight, greenLeft, greenRight, blueLeft, blueRight, setting;
+
       function onLoad()
       {
+          setting = document.getElementById("setting");
+
+          redBar = document.getElementById("red");
+          greenBar = document.getElementById("green");
+          blueBar = document.getElementById("blue");
+          sample = document.getElementById("color-sample");
+          redLeft = document.getElementById("red-left");
+          redRight = document.getElementById("red-right");
+          greenLeft = document.getElementById("green-left");
+          greenRight = document.getElementById("green-right");
+          blueLeft = document.getElementById("blue-left");
+          blueRight = document.getElementById("blue-right");
+
           updateColors();
       }
 
       function onMenuClick()
       {
-          var setting = document.getElementById("setting");
           setting.style.display = "block";
       }
 
       function onBackClick()
       {
-          var setting = document.getElementById("setting");
           setting.style.display = "none";
       }
 
       function onWhiteClick()
       {
-          var redBar = document.getElementById("red");
-          var greenBar = document.getElementById("green");
-          var blueBar = document.getElementById("blue");
-
           redBar.value = 255;
           greenBar.value = 255;
           blueBar.value = 255;
@@ -123,10 +132,6 @@
 
       function onBlackClick()
       {
-          var redBar = document.getElementById("red");
-          var greenBar = document.getElementById("green");
-          var blueBar = document.getElementById("blue");
-
           redBar.value = 0;
           greenBar.value = 0;
           blueBar.value = 0;
@@ -136,33 +141,22 @@
 
       function updateColors()
       {
-      var redBar = document.getElementById("red");
-      var greenBar = document.getElementById("green");
-      var blueBar = document.getElementById("blue");
+          var r = redBar.value;
+          var g = greenBar.value;
+          var b = blueBar.value;
 
-      var r = redBar.value;
-      var g = greenBar.value;
-      var b = blueBar.value;
+          sample.style["background-color"] = "rgb(" + r + "," + g + "," + b + ")";
 
-      var sample = document.getElementById("color-sample");
-      sample.style["background-color"] = "rgb(" + r + "," + g + "," + b + ")";
+          document.body.style["background-color"] = "rgb(" + r + "," + g + "," + b + ")";
 
-      document.body.style["background-color"] = "rgb(" + r + "," + g + "," + b + ")";
+          redLeft.style["background-color"] = "rgb(0," + g + "," + b + ")";
+          redRight.style["background-color"] = "rgb(255," + g + "," + b + ")";
 
-      var redLeft = document.getElementById("red-left");
-      redLeft.style["background-color"] = "rgb(0," + g + "," + b + ")";
-      var redRight = document.getElementById("red-right");
-      redRight.style["background-color"] = "rgb(255," + g + "," + b + ")";
+          greenLeft.style["background-color"] = "rgb(" + r + ",0," + b + ")";
+          greenRight.style["background-color"] = "rgb(" + r + ",255," + b + ")";
 
-      var greenLeft = document.getElementById("green-left");
-      greenLeft.style["background-color"] = "rgb(" + r + ",0," + b + ")";
-      var greenRight = document.getElementById("green-right");
-      greenRight.style["background-color"] = "rgb(" + r + ",255," + b + ")";
-
-      var blueLeft = document.getElementById("blue-left");
-      blueLeft.style["background-color"] = "rgb(" + r + "," + g + ",0)";
-      var blueRight = document.getElementById("blue-right");
-      blueRight.style["background-color"] = "rgb(" + r + "," + g + ",255)";
+          blueLeft.style["background-color"] = "rgb(" + r + "," + g + ",0)";
+          blueRight.style["background-color"] = "rgb(" + r + "," + g + ",255)";
       }
 
     </script>
